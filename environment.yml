@@ -1,0 +1,14 @@
+name: catt-test
+channels:
+    - conda-forge
+
+dependencies:
+   - python=3.9
+   - pip
+   - git
+   - compas
+   - streamlit
+   - textual
+   - pip:
+     - compas_eve
+     - linkify-it-py
