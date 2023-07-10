@@ -1,4 +1,4 @@
-name: catt-test
+name: catt
 channels:
     - conda-forge
 
