@@ -4,30 +4,19 @@ import time
 from compas_eve import Message, Publisher, Subscriber, Topic
 
 
-class HelloPublisher(Publisher):
-    def message_published(self, message):
-        print("Published message: " + message.text)
+# TODO: create a new class called "HelloPublisher" to be able to print a text on screen on message_published events
 
-
-class HelloSubscriber(Subscriber):
-    def message_received(self, message):
-        print("Received message: " + message.text)
+# TODO: create a new class called "HelloSubscriber" to be able to handle message_received events
 
 
 def main():
-    topic = Topic("/workshop_ds/messages/" + getpass.getuser(), Message)
+    # TODO: instantiate the topic using `getpass.getuser()` to get your username
 
-    publisher = HelloPublisher(topic)
-    subscriber = HelloSubscriber(topic)
-    subscriber.subscribe()
+    # TODO: instantiate publisher and subscriber and subscribe
 
-    for i in range(100):
-        publisher.publish(Message(text="Hello World #{}".format(i)))
-        time.sleep(1)
+    # TODO: publish multiple messages with a small delay in between
 
-    publisher.unadvertise()
-    subscriber.unsubscribe()
-
+    # TODO: cleanup
 
 if __name__ == "__main__":
     main()

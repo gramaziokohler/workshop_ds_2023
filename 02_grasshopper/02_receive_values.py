@@ -5,25 +5,17 @@ from compas_eve import Message, Subscriber, Topic, set_default_transport
 from compas_eve.mqtt import MqttTransport
 
 
-class ValueSubscriber(Subscriber):
-    def message_received(self, message):
-        print("Received value: {}".format(message.value))
+# TODO: create a new class called "ValueSubscriber" to be able to handle message_received events
+# each received message will contain `message.value` with the value
 
 
 def main():
-    host = "broker.hivemq.com"
-    set_default_transport(MqttTransport(host=host))
+    # TODO: set the default transport to use `MqttTransport` with the `broker.hivemq.com` host
+    # TODO: instantiate the topic using `getpass.getuser()` to get your username
 
-    topic = Topic("/workshop_ds/values/" + getpass.getuser(), Message)
+    # TODO: instantiate subscriber and subscribe
 
-    subscriber = ValueSubscriber(topic)
-    subscriber.subscribe()
-
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        subscriber.unsubscribe()
+    # TODO: publish multiple messages with a small delay in between
 
 
 if __name__ == "__main__":

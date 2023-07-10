@@ -1,27 +1,10 @@
-import getpass
 import time
 
 from compas_eve import Message, Subscriber, Topic, set_default_transport
 from compas_eve.mqtt import MqttTransport
 
 
-class CO2Subscriber(Subscriber):
-    def message_received(self, message):
-        print("CO2: " + str(message.value))
-
-
-def main():
-    host = "broker.hivemq.com"
-    set_default_transport(MqttTransport(host=host))
-
-    topic = Topic("/workshop_ds/sensors/co2/" + getpass.getuser(), Message)
-
-    subscriber = CO2Subscriber(topic)
-    subscriber.subscribe()
-
-    while True:
-        time.sleep(1)
-
-
-if __name__ == "__main__":
-    main()
+# TODO: Follow the same structure as 02_grasshopper\02_receive_values
+# with the following differences:
+#  1. Create a CO2Subscriber instead of a ValueSubscriber
+#  2. When subscribing to the topic, use the following name: `/workshop_ds/sensors/co2/#`

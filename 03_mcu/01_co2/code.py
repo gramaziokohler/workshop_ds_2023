@@ -1,4 +1,7 @@
-# HOWTO: connect a sensor to the distributed system and send CO2 measurements
+# This code runs on a Raspberry Pi Pico, it's almost python: it's called CircuitPython
+# It will connect to the CO2 sensor plugged to the Pico, read the values and then publish them
+# the sensor includes temperature and relative humidity
+
 import board
 import busio
 import json

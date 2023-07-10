@@ -5,32 +5,21 @@ from compas_eve import Message, Publisher, Subscriber, Topic, set_default_transp
 from compas_eve.mqtt import MqttTransport
 
 
-class HelloPublisher(Publisher):
-    def message_published(self, message):
-        print("Published message: " + message.text)
+# TODO: create a new class called "HelloPublisher" to be able to print a text on screen on message_published events
 
-
-class HelloSubscriber(Subscriber):
-    def message_received(self, message):
-        print("Received message: " + message.text)
+# TODO: create a new class called "HelloSubscriber" to be able to handle message_received events
 
 
 def main():
-    host = "broker.hivemq.com"
-    set_default_transport(MqttTransport(host=host))
+    # TODO: set the default transport to use `MqttTransport` with the `broker.hivemq.com` host
+    # TODO: instantiate the topic using `getpass.getuser()` to get your username
 
-    topic = Topic("/workshop_ds/messages/" + getpass.getuser(), Message)
+    # TODO: instantiate publisher and subscriber and subscribe
 
-    publisher = HelloPublisher(topic)
-    subscriber = HelloSubscriber(topic)
-    subscriber.subscribe()
+    # TODO: publish multiple messages with a small delay in between
 
-    for i in range(100):
-        publisher.publish(Message(text="Hello World #{}".format(i)))
-        time.sleep(1)
+    # TODO: cleanup
 
-    publisher.unadvertise()
-    subscriber.unsubscribe()
 
 
 if __name__ == "__main__":
