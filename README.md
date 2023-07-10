@@ -36,6 +36,17 @@ conda env create -f environment.yml
 
 ---
 
+## `compas_eve`: Event extensions for COMPAS
+
+This is a new COMPAS package that facilitates event-based communication. It works on both CPython and IronPython.
+
+There are 4 main concepts:
+* **Topic**: it's a named "mailbox". The name of a topic looks like a path with components separated by slashes. We can send (ie. publish) messages to a topic without knowing or caring who will receive it. This concept is represented by the `Topic` class in `compas_eve`.
+* **Publisher**: sends messages to a topic. The class `Publisher` represents this concept. You can use the class directly, or alternatively, you can create a subclass and implement the method `message_published(self, message)` to be able to handle or do custom stuff when a message is published.
+* **Subscriber**: receives messages from a topic. The class `Subscriber` represents this concept. To handle received messages, create a subclass and implement the method `message_received(self, message)`.
+* **Transport**: defines the way in which messages are transported from publishers to subscribers. By default, `compas_eve` uses an in-memory transport, ie. it only works for a single process, but it's useful for testing. To use a transport that works across processes, computers, networks, galaxies, use a different one, like `MqttTransport`.
+
+---
 
 ## Terminology
 
